@@ -10,16 +10,17 @@ The central question of the semester: **does diversifying across trading strateg
 
 ## Stock Universe
 
-| Ticker | Name | Type / Sector |
-|---|---|---|
-| SPY | SPDR S&P 500 ETF | Index ETF (large cap) |
-| QQQ | Invesco QQQ Trust | Index ETF (Nasdaq-100) |
-| AAPL | Apple | Technology |
-| NVDA | NVIDIA | Semiconductors |
-| JPM | JPMorgan Chase | Financials |
-| LLY | Eli Lilly | Pharmaceuticals |
-| AMGN | Amgen | Biotechnology |
-| XOM | ExxonMobil | Energy |
+| Ticker | Name | Type / Sector | Data Cleaning Owner |
+|---|---|---|---|
+| QQQ | Invesco QQQ Trust | Index ETF (Nasdaq-100) | Nathan |
+| AAPL | Apple | Technology | Manoj |
+| AMZN | Amazon | Consumer Discretionary / Technology | Nikhil |
+| TSLA | Tesla | Automotive / Consumer Discretionary | Fiona |
+| JPM | JPMorgan Chase | Financials | Charles |
+| LLY | Eli Lilly | Pharmaceuticals | Unassigned |
+| AMGN | Amgen | Biotechnology | Manoj |
+| XOM | ExxonMobil | Energy | Neel |
+| MCD | McDonald's | Consumer Staples / Restaurants | Vivek |
 
 Sample period: at least 8-10 years of daily data so results span more than one market regime.
 
