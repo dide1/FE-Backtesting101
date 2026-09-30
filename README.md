@@ -17,7 +17,6 @@ The central question of the semester: **does diversifying across trading strateg
 | AMZN | Amazon | Consumer Discretionary / Technology | Nikhil |
 | TSLA | Tesla | Automotive / Consumer Discretionary | Fiona |
 | JPM | JPMorgan Chase | Financials | Charles |
-| LLY | Eli Lilly | Pharmaceuticals | Unassigned |
 | AMGN | Amgen | Biotechnology | Manoj |
 | XOM | ExxonMobil | Energy | Neel |
 | MCD | McDonald's | Consumer Staples / Restaurants | Vivek |
