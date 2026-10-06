@@ -72,16 +72,12 @@ for ticker_name in TICKERS:
 
     #Cleaning
 
-    df = (
-        df
-        .dropna()
-        .loc[~df.index.duplicated()]
-        .sort_index()
-    )
+    df = df.loc[~df.index.duplicated()].sort_index()
+    close = df["Adj Close"].dropna().rename("Close")
+
 
     # Returns must use adjusted close
-    df["Return"] = df["Adj Close"].pct_change()
+    close.to_csv(FILE_PATH)
 
-    df.to_csv(FILE_PATH)
 
     print(f"\nSaved {ticker_name} to {FILE_PATH}")
