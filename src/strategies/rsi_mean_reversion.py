@@ -23,19 +23,13 @@ def rsi_mean_reversion(cash,shares,ticker_data):
     else:
         rs = average_gain/average_loss
         rsi = 100 - (100/(1+rs))
-    #buys a ratio of your cash in stock depending on RSI when above threshold
+    #oversold: spend all the cash on shares
     if rsi < 30 and cash > 0:
-        buy_ratio = (30 - rsi) / 30
-
-        spending = cash * buy_ratio
-        shares += spending/current_price
-        cash -= spending
-    #sells a ratio of your stock depending on RSI when below threshold
+        shares += cash/current_price
+        cash = 0
+    #reverted back above neutral: sell everything
     elif rsi > 50 and shares > 0:
-        sell_ratio = (rsi -50) /50
-
-        selling = shares * sell_ratio
-        cash += selling * current_price
-        shares -= selling
+        cash += shares * current_price
+        shares = 0
 
     return cash, shares
