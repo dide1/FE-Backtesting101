@@ -10,12 +10,13 @@ import os
 import matplotlib
 matplotlib.use("Agg")  # save charts to files without opening a window
 import matplotlib.pyplot as plt
+import matplotlib.ticker
 import pandas as pd
 
 from src.engine import evaluate, load_risk_free_rate, run_backtest
 
 # Settings
-TICKERS = ["XOM"]
+TICKERS = ["QQQ", "AAPL", "AMZN", "TSLA", "JPM", "AMGN", "XOM", "MCD"]
 STRATEGY_DIR = "src/strategies"
 OUTPUT_DIR = "results"
 CHART_DIR = os.path.join(OUTPUT_DIR, "equity_curves")
@@ -61,11 +62,19 @@ def style_axes(ax, title):
 
 def plot_by_strategy(curves, tickers, strategies):
     """One chart per strategy, one line per ticker."""
+    ticker_fmt = matplotlib.ticker.FuncFormatter(lambda y, _: f"{y:,.0f}")
     for strategy in strategies:
         fig, ax = plt.subplots(figsize=(10, 5))
         for i, ticker in enumerate(tickers):
             ax.plot(curves[(ticker, strategy)], label=ticker, color=COLORS[i % len(COLORS)], linewidth=1.5)
         style_axes(ax, f"Equity curve: {strategy}")
+        # Log scale so one big winner (e.g. TSLA) doesn't flatten the other lines;
+        # equal heights on the chart mean equal % changes
+        ax.set_yscale("log")
+        ax.yaxis.set_major_locator(matplotlib.ticker.LogLocator(base=10, subs=(1, 2, 5)))
+        ax.yaxis.set_major_formatter(ticker_fmt)
+        ax.yaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+        ax.set_ylabel(r"Portfolio value (started at \$100, log scale)")
         fig.tight_layout()
         fig.savefig(os.path.join(CHART_DIR, f"{strategy}.png"), dpi=150)
         plt.close(fig)
