@@ -1,9 +1,10 @@
+
 def rsi_mean_reversion(cash,shares,ticker_data):
 
 
     current_price = ticker_data.iloc[-1]
     signal_data = ticker_data.iloc[:-1]
-
+    #do nothing if there is less than 15 days of data
     if(len(signal_data) < 15):
         return cash, shares
     #creates df of changes
